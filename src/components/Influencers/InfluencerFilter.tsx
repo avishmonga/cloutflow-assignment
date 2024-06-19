@@ -1,37 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Slider, Row, Col, Select, Button } from 'antd';
+import Title from 'antd/es/typography/Title';
 
 const { Option } = Select;
 
 interface InfluencerFilterProps {
+  state: {
+    costRange: [number, number];
+    ratingRange: [number, number];
+    selectedFollowers: string;
+    selectedGenders: string;
+  };
+  dispatch: React.Dispatch<any>;
   onSearch: () => Promise<void>;
 }
 
-const InfluencerFilter: React.FC<InfluencerFilterProps> = ({ onSearch }) => {
-  const [costRange, setCostRange] = useState<[number, number]>([0, 50000]);
-  const [ratingRange, setRatingRange] = useState<[number, number]>([0, 5]);
-  const [selectedFollowers, setSelectedFollowers] = useState<string>('all');
-
-  const [selectedGenders, setSelectedGenders] = useState<string>('all');
-
+const InfluencerFilter: React.FC<InfluencerFilterProps> = ({
+  onSearch,
+  state,
+  dispatch,
+}) => {
+  const { costRange, ratingRange, selectedFollowers, selectedGenders } = state;
   const onCostChange = (value: number[]) => {
-    setCostRange([value[0], value[1]]);
+    dispatch({ type: 'COST_RANGE', payload: [value[0], value[1]] });
   };
 
   const onRatingChange = (value: number[]) => {
-    setRatingRange([value[0], value[1]]);
+    dispatch({ type: 'RATING_RANGE', payload: [value[0], value[1]] });
   };
+
   const onFollowersChange = (value: string) => {
-    setSelectedFollowers(value);
+    dispatch({ type: 'SELECTED_FOLLOWERS', payload: value });
   };
 
   const onGenderChange = (value: string) => {
-    setSelectedGenders(value);
+    dispatch({ type: 'SELECTED_GENDER', payload: value });
   };
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>Filter Influencers</h2>
+      <Title>Filter Influencers</Title>
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <h3>Cost (₹)</h3>

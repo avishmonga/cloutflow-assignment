@@ -1,4 +1,11 @@
 type notation = null | 'standard' | 'scientific' | 'engineering' | 'compact';
+
+/**
+ * Format a number into a string with notation.
+ * @param value The number to format.
+ * @param notation This is an optional field it specify notation to format.
+ * @returns A formatted string representation of the number.
+ */
 const formatNumber = (
   value: number,
   { notation }: { notation?: notation }
@@ -11,6 +18,13 @@ const formatNumber = (
     isNaN(value) ? 0 : value
   );
 };
+/**
+ * Format a number into a string with its currency symbol and optional notation.
+ * @param value The number to format.
+ * @param currency The currency symbol to use.
+ * @param notation This is an optional field it specify notation to format.
+ * @returns A formatted string representation of the number.
+ */
 const formatAmount = (
   value: number,
   { notation, currency }: { notation?: notation; currency: string }

@@ -1,0 +1,28 @@
+/* Influencers css  */
+/* backgroundColor: 'red',
+                borderRadius: '8px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center', */
+
+.container {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wizard {
+  width: 85%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.wizard_image_container {
+  background-color: rgba(127, 255, 212, 0.603);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
