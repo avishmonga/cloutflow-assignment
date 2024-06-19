@@ -26,3 +26,17 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0px;
+  }
+  .wizard {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .wizard_image_container {
+    display: hidden;
+  }
+}
